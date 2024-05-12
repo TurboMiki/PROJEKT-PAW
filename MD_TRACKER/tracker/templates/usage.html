@@ -1,0 +1,59 @@
+{% extends "master.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block submit_form %}
+<form action="usage" method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        Submit
+    </button>
+    
+</form>
+{% endblock submit_form %}
+
+{% block table %}
+{% for row in table %}
+    <div
+        class="row justify-content-center align-items-center text-center "
+    >
+        <div class="col">{{row.use_from}}</div>
+        <div class="col">{{row.use_to}}</div>
+        <div class="col">{{row.user}}</div>
+        <div class="col">{{row.equipment}}</div>
+        <div class="col">{{row.room}}</div>
+        
+    </div>
+    
+{% endfor %}
+
+{% endblock table %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="usage" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value ="Submit">
+    </form>
+    <table>
+        {% for row in table %}
+            <tr>
+                <td>{{row.name}}</td>
+                <td>{{row.floor}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html> {% endcomment %}
